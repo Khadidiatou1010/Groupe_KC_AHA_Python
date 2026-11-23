@@ -28,8 +28,8 @@ def plot_bd_forests_data(gdf):
         figsize=(10, 10),
         facecolor="forestgreen", 
         alpha=0.6, 
-        edgecolor='black',
-        linewidth=0.5,
+        edgecolor='k',
+        linewidth=0.25,
         )
     cx.add_basemap(ax, source=p)
     ax.set_axis_off()

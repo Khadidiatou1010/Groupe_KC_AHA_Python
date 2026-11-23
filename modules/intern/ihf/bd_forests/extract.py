@@ -17,7 +17,7 @@ import geopandas as gpd
 
 # # global variable
 
-BD_FORESTS_FILE = ["../../data/vegetation/FORMATION_VEGETALE.shp"]
+BD_FORESTS_FILE = ["../../data/vegetation/occupation-du-sol-region-sud-2019Polygon.shp"]
 
 
 def read_bd_forests_file(path):

@@ -40,6 +40,18 @@ def read_ban_file(path):
     df = pd.read_csv(path, sep=";") # sep=";" the ihf ban files are semicolon separated
     return df
 
+def read_concatenated_ban_files(paths):
+    """
+    Function to read and concatenate multiple IHF BAN files into a single DataFrame.
+    :param paths: list of paths to the IHF BAN files
+    :return: pandas DataFrame
+    """
+    return pd.concat(
+        (read_ban_file(f) for f in paths),
+        ignore_index=True,
+    )
+
+
 
 
 

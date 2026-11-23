@@ -28,7 +28,7 @@ def plot_ban_data(df):
         crs="EPSG:4326",
     ).to_crs(epsg=3857)
 
-    ax = gdf.plot(markersize=2, color="red", figsize=(10, 10))
+    ax = gdf.plot(markersize=1, color="red", figsize=(10, 10))
     cx.add_basemap(ax, source=p)
     ax.set_axis_off()
 

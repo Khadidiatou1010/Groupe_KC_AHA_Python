@@ -1,1 +1,9 @@
 .venv/*
+__pycache__/
+*.pyc
+
+occupation-du-sol-region-sud-2019Polygon*
+wfsrequest*
+
+
+
