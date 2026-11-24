@@ -5,5 +5,7 @@ __pycache__/
 occupation-du-sol-region-sud-2019Polygon*
 wfsrequest*
 
+sorties/
 
+*.zip
 
