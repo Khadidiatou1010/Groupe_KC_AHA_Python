@@ -11,3 +11,4 @@ sorties/
 
 *.zip
 
+.env*
