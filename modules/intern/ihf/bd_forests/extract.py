@@ -15,7 +15,7 @@ import os
 # # Third Party Imports
 import geopandas as gpd
 
-# # Project Imports: download function shared with the ATS part
+# # Project Imports
 from intern.ats import chargement, parametres
 
 # # global variable
@@ -30,10 +30,10 @@ def read_bd_forests_file(path=BD_FORESTS_FILE[0]):
     :param path: path to the vegetation file
     :return: GeoDataFrame
     """
-    dossier = os.path.dirname(path)
-    nom_fichier = os.path.basename(path)
-    # the function returns the REAL path of the file (it may be inside a sub-folder of the zip)
-    vrai_chemin = chargement.telecharger_et_dezipper(parametres.URL_FORETS, dossier, nom_fichier)
+    folder = os.path.dirname(path)
+    filename = os.path.basename(path)
+    
+    filepath = chargement.telecharger_et_dezipper(parametres.URL_FORETS, folder, filename)
 
-    gdf = gpd.read_file(vrai_chemin)
+    gdf = gpd.read_file(filepath)
     return gdf
