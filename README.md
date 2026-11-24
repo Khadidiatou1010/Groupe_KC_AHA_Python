@@ -80,6 +80,7 @@ Groupe_KC_AHA_Python/
             ├── calculs.py             ← caserne la plus proche, délais, typologie
             ├── graphiques.py          ← tableaux, graphiques et cartes statiques
             └── cartes_interactives.py ← cartes Folium
+    └── external/                      ← un résumé du travail. Nous avons opté pour cela à la place d'un notebook...
 ```
 
 **Principe :** les notebooks racontent l’analyse étape par étape, avec un code court. Le code technique (lecture des fichiers, calculs, cartes) est rangé dans des **modules** du dossier `modules/`. Les notebooks restent ainsi lisibles, et une même fonction peut servir plusieurs fois sans copier-coller.
