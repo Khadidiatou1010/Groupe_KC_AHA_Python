@@ -12,3 +12,5 @@ sorties/
 *.zip
 
 .env*
+
+shadow_zones*
