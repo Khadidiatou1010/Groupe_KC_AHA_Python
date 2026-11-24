@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incendies de forêt en PACA · Habitations exposées et accessibilité des secours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400..700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- bouton pour ouvrir / fermer la barre latérale -->
+<button class="bouton-menu" id="bouton-menu" aria-label="Ouvrir ou fermer le menu">☰</button>
+
+<!-- ================= BARRE LATÉRALE ================= -->
+<aside class="sidebar">
+  <div class="logo">Incendies <span>PACA</span></div>
+  <p class="sous-logo">Tableau de bord des résultats</p>
+  <nav>
+    <p class="groupe">Vue d’ensemble</p>
+    <a href="#accueil"><span class="ico">◆</span>Chiffres clés</a>
+    <a href="#contexte"><span class="ico">◆</span>Contexte</a>
+    <a href="#methode"><span class="ico">◆</span>Données et méthode</a>
+    <p class="groupe">Partie 1 · Habitat-forêt</p>
+    <a href="#partie1"><span class="ico">1.1</span>Le territoire</a>
+    <a href="#p1-distance"><span class="ico">1.2</span>Distance à la forêt</a>
+    <a href="#p1-score"><span class="ico">1.3</span>Score d’exposition</a>
+    <a href="#p1-cartes"><span class="ico">1.4</span>Cartes interactives</a>
+    <a href="#p1-stats"><span class="ico">1.5</span>Exposition et feux</a>
+    <p class="groupe">Partie 2 · Secours</p>
+    <a href="#partie2"><span class="ico">2.1</span>Les casernes</a>
+    <a href="#p2-delais"><span class="ico">2.2</span>Les délais</a>
+    <a href="#p2-cartes"><span class="ico">2.3</span>Cartes interactives</a>
+    <a href="#p2-lien"><span class="ico">2.4</span>Incendies et délais</a>
+    <a href="#p2-typo"><span class="ico">2.5</span>Typologie</a>
+    <p class="groupe">Conclusion</p>
+    <a href="#synthese"><span class="ico">◆</span>Synthèse</a>
+    <a href="#limites"><span class="ico">◆</span>Limites</a>
+  </nav>
+  <div class="sidebar-pied">
+    <b>Khadidiatou Coulibaly<br>Abdou Hamid Alagbe</b><br>
+    ENSAE Paris · M. Daniel Marin<br>
+    <span class="claude">Réalisé avec Claude</span>
+  </div>
+</aside>
+
+<main class="contenu">
+
+<!-- ================= EN-TÊTE ================= -->
+<header id="accueil">
+  <div class="inner">
+    <p class="eyebrow">ENSAE Paris · Projet Python</p>
+    <h1>Incendies de forêt en PACA : qui est exposé, et les secours peuvent-ils arriver à temps ?</h1>
+    <p class="sous-titre">Nous croisons 1,26 million d’adresses, plus de 100 000 forêts, 460 casernes et dix ans d’incendies pour mesurer deux choses : l’exposition des habitations au contact de la forêt, et l’accessibilité des forêts pour les sapeurs-pompiers.</p>
+    <p class="equipe"><b>Khadidiatou Coulibaly · Abdou Hamid Alagbe</b><br>Sous la supervision de M. Daniel Marin</p>
+  </div>
+</header>
+
+<!-- ================= CHIFFRES CLÉS ================= -->
+<section style="padding-top:0;">
+  <div class="inner">
+    <div class="kpis">
+      <div class="kpi"><div class="valeur">26 %</div><div class="label">des adresses à moins de 100 m d’une forêt</div></div>
+      <div class="kpi"><div class="valeur">61 %</div><div class="label">des habitations isolées en interface habitat-forêt</div></div>
+      <div class="kpi"><div class="valeur">7 min</div><div class="label">délai médian d’accès à une forêt</div></div>
+      <div class="kpi"><div class="valeur">154</div><div class="label">communes prioritaires (beaucoup de feux, délai long)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTEXTE ================= -->
+<section id="contexte">
+  <div class="inner duo">
+    <div>
+      <p class="eyebrow">Contexte</p>
+      <h2>Une région où tout se prête au feu</h2>
+      <p>Forêts et garrigues omniprésentes, étés chauds et secs balayés par le mistral, changement climatique qui allonge la saison des feux : la région Provence-Alpes-Côte d’Azur est l’une des plus exposées de France.</p>
+      <p>À ce risque naturel s’ajoute une forte pression humaine : plus de cinq millions d’habitants, une urbanisation qui grignote les lisières et une fréquentation touristique intense. Or la grande majorité des feux sont d’origine humaine.</p>
+      <div class="encadre"><b>5 940 feux</b> de forêt recensés par la BDIFF en PACA entre 2016 et 2025, pour près de <b>35 000 ha</b> parcourus.</div>
+    </div>
+    <div class="cadre"><img src="img/ats_incendies_annee.png" alt="Nombre d’incendies par année en PACA de 2016 à 2025"></div>
+  </div>
+  <div class="inner duo inverse" style="margin-top:48px;">
+    <div class="cadre"><img src="img/ats_causes.png" alt="Causes des incendies en PACA"></div>
+    <div>
+      <h3 style="font-size:28px;">Deux questions pour protéger les populations</h3>
+      <ul class="points">
+        <li><b>Partie 1.</b> Quelles habitations vivent au contact direct de la forêt, et à quel point sont-elles exposées ?</li>
+        <li><b>Partie 2.</b> Les sapeurs-pompiers peuvent-ils atteindre rapidement les forêts, et les communes les plus touchées sont-elles bien desservies ?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MÉTHODE ================= -->
+<section id="methode" class="sable">
+  <div class="inner">
+    <p class="eyebrow">Données et méthode</p>
+    <h2>Quatre sources ouvertes, deux analyses spatiales</h2>
+    <p class="intro">Base Adresse Nationale (adresses), occupation du sol 2019 de la région Sud (forêts, <code>exo_19 = "BD FORET"</code>), OpenStreetMap (casernes, via Overpass Turbo) et BDIFF (incendies). Toutes les distances sont calculées en Lambert-93 (EPSG:2154).</p>
+    <div class="deux-images">
+      <div>
+        <h3 style="font-size:24px; margin-bottom:14px;">Partie 1 · Interface habitat-forêt</h3>
+        <div class="etapes" style="grid-template-columns:1fr 1fr;">
+          <div class="etape"><div class="num">01</div><h3>Distance à la lisière</h3><p>Pour chaque adresse, distance à la forêt la plus proche (négative à l’intérieur d’un massif).</p></div>
+          <div class="etape"><div class="num">02</div><h3>Bandes et typologie</h3><p>Cinq bandes de distance, et habitat isolé, groupé ou dense selon le voisinage dans un rayon de 50 m.</p></div>
+          <div class="etape"><div class="num">03</div><h3>Score d’exposition</h3><p>De 0 à 1 : moitié proximité de la forêt, moitié part de forêt dans un rayon de 100 m.</p></div>
+          <div class="etape"><div class="num">04</div><h3>Confrontation aux feux</h3><p>Par commune : tests statistiques et modèle de comptage des incendies 2010-2025.</p></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:24px; margin-bottom:14px;">Partie 2 · Accessibilité des secours</h3>
+        <div class="etapes" style="grid-template-columns:1fr 1fr;">
+          <div class="etape"><div class="num">01</div><h3>Un point par forêt</h3><p>Chaque polygone forestier est résumé par un point situé à l’intérieur.</p></div>
+          <div class="etape"><div class="num">02</div><h3>Caserne la plus proche</h3><p>Jointure spatiale au plus proche voisin avec 460 casernes (PACA + 20 km).</p></div>
+          <div class="etape"><div class="num">03</div><h3>Délai théorique</h3><p>Distance à vol d’oiseau × 1,3 (détour), à 50 km/h.</p></div>
+          <div class="etape"><div class="num">04</div><h3>Typologie</h3><p>Délais moyens par commune, croisés avec le nombre d’incendies.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- ======================= PARTIE 1 =============================== -->
+<!-- ================================================================ -->
+<div class="partie-titre" id="partie1">
+  <div class="inner">
+    <div class="num-partie">Partie 1</div>
+    <h2>L’interface habitat-forêt</h2>
+    <p>Où vivent les habitants exposés au feu, et à quel point leur logement est-il au contact de la forêt ?</p>
+  </div>
+</div>
+
+<!-- 1.1 Le territoire -->
+<section>
+  <div class="inner">
+    <p class="eyebrow">1.1 · Le territoire</p>
+    <h2>Des habitants sur le littoral, des forêts partout ailleurs</h2>
+    <div class="deux-images" style="margin-top:28px;">
+      <div><div class="cadre"><img src="img/ihf_adresses_paca.png" alt="Carte des adresses de la Base Adresse Nationale en PACA"></div><p class="legende-image">Les 1,26 million d’adresses analysées</p></div>
+      <div><div class="cadre"><img src="img/ihf_forets.png" alt="Carte des forêts de PACA issues de l’occupation du sol 2019"></div><p class="legende-image">Les forêts (occupation du sol 2019, BD Forêt)</p></div>
+    </div>
+    <ul class="points">
+      <li>Les adresses se concentrent sur la bande côtière et la vallée du Rhône (Marseille, Toulon, Nice, Avignon).</li>
+      <li>La forêt couvre une grande partie du territoire, en particulier dans le Var et l’arrière-pays alpin : les deux se rencontrent sur de longues lisières.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 1.2 Distance à la forêt -->
+<section class="sable" id="p1-distance">
+  <div class="inner duo">
+    <div>
+      <p class="eyebrow">1.2 · Distance à la forêt</p>
+      <h2>Une adresse sur quatre en interface habitat-forêt</h2>
+      <table>
+        <tr><th>Distance à la lisière</th><th class="n">Adresses</th><th class="n">Part</th></tr>
+        <tr class="fort"><td>Dans la forêt</td><td class="n">29 761</td><td class="n">2,4 %</td></tr>
+        <tr class="fort"><td>À moins de 50 m</td><td class="n">154 786</td><td class="n">12,3 %</td></tr>
+        <tr class="fort"><td>De 50 à 100 m</td><td class="n">145 328</td><td class="n">11,5 %</td></tr>
+        <tr><td>De 100 à 200 m</td><td class="n">202 494</td><td class="n">16,1 %</td></tr>
+        <tr><td>Au-delà de 200 m</td><td class="n">727 755</td><td class="n">57,8 %</td></tr>
+        <tr><td><b>Total</b></td><td class="n"><b>1 260 124</b></td><td class="n"><b>100 %</b></td></tr>
+      </table>
+      <div class="encadre"><b>26,2 %</b> des adresses, soit environ <b>330 000</b>, sont à moins de 100 m d’une forêt : c’est notre définition de l’interface habitat-forêt.</div>
+    </div>
+    <div>
+      <div class="cadre"><img src="img/ihf_bandes_typologie.png" alt="Répartition des adresses par bande de distance à la forêt selon le type d’habitat"></div>
+      <ul class="points">
+        <li>L’habitat est très majoritairement <b>dense</b> (88 % des adresses), contre 7 % <b>groupé</b> et 5 % <b>isolé</b>.</li>
+        <li>Mais l’habitat isolé est massivement exposé : <b>22 %</b> des habitations isolées sont <b>dans</b> la forêt, et <b>61 %</b> à moins de 100 m.</li>
+        <li>En habitat dense, seules 0,8 % des adresses sont en forêt et 22 % à moins de 100 m.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 1.3 Score d'exposition -->
+<section id="p1-score">
+  <div class="inner duo inverse">
+    <div class="cadre"><img src="img/ihf_score_departements.png" alt="Distribution du score d’exposition par département et communes les plus exposées"></div>
+    <div>
+      <p class="eyebrow">1.3 · Score d’exposition</p>
+      <h2>Une exposition faible en moyenne, extrême par endroits</h2>
+      <div class="formule"><b>Score</b> = 0,5 × proximité de la forêt + 0,5 × part de forêt dans un rayon de 100 m</div>
+      <ul class="points">
+        <li>Le score vaut 1 pour une habitation en forêt et décroît jusqu’à 0 à 200 m de la lisière.</li>
+        <li>Dans tous les départements, la plupart des adresses ont un score proche de 0 : l’exposition est concentrée sur une minorité d’habitations.</li>
+        <li>Les communes les plus exposées (au moins 200 adresses) sont surtout dans l’arrière-pays des <b>Alpes-Maritimes (06)</b> et des <b>Hautes-Alpes (05)</b>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 1.4 Cartes interactives partie 1 -->
+<section class="sombre" id="p1-cartes">
+  <div class="inner">
+    <p class="eyebrow">1.4 · Cartes interactives</p>
+    <h2>Explorer l’interface habitat-forêt</h2>
+    <p class="intro">La carte des « zones d’ombre » montre les habitations à la fois <b>isolées</b> et <b>fortement exposées</b> (score ≥ 0,5) : les plus difficiles à protéger.</p>
+    <div class="onglets" data-cible="carte-p1">
+      <button class="actif" data-carte="cartes/ihf_zones_ombre.html">Zones d’ombre</button>
+      <button data-carte="cartes/ihf_grille_ihf.html">Part d’adresses en interface (carreaux de 500 m)</button>
+      <button data-carte="cartes/ihf_exemple_allons.html">Zoom sur une commune : Allons (04)</button>
+    </div>
+    <iframe id="carte-p1" class="carte-web" src="cartes/ihf_zones_ombre.html" title="Cartes interactives de l’interface habitat-forêt" loading="lazy"></iframe>
+    <p class="astuce">La carte en carreaux est lourde (environ 11 Mo) : son chargement peut prendre quelques secondes.</p>
+  </div>
+</section>
+
+<!-- 1.5 Exposition et incendies -->
+<section class="sombre" id="p1-stats">
+  <div class="inner">
+    <p class="eyebrow">1.5 · Exposition et incendies</p>
+    <h2>Être exposé ne veut pas dire brûler plus souvent</h2>
+    <p class="intro">Nous avons confronté, commune par commune, l’exposition des habitations et le nombre d’incendies de 2010 à 2025 (communes comptant au moins 50 ha de forêt).</p>
+    <div class="stats">
+      <div class="stat"><div class="valeur">+24 %</div><div class="titre">Densité d’habitat</div><p>Modèle binomial négatif : quand la densité est multipliée par e (≈ 2,7), le nombre de feux augmente de 24 % (IRR = 1,24 ; IC 95 % : 1,19-1,30).</p></div>
+      <div class="stat"><div class="valeur">0,19</div><div class="titre">Score d’exposition</div><p>À densité et département égaux, les communes les plus exposées connaissent moins de feux (IRR = 0,19 ; IC 95 % : 0,12-0,31).</p></div>
+      <div class="stat"><div class="valeur">V = 0,19</div><div class="titre">Test du khi-deux</div><p>La présence de feux dépend de la densité d’habitat (χ² = 31,6 ; p &lt; 0,001), avec un lien modéré.</p></div>
+      <div class="stat"><div class="valeur">AUC 0,38</div><div class="titre">Pouvoir prédictif</div><p>Le score moyen ne prédit pas les communes touchées (0,38, sous le hasard), contre 0,61 pour la seule surface forestière.</p></div>
+    </div>
+    <div class="encadre sombre">
+      <b>Lecture.</b> Les feux éclatent surtout là où vivent les gens (densité, Bouches-du-Rhône), pas là où les maisons sont le plus enfoncées dans la forêt. Le score mesure donc la <b>vulnérabilité</b> des habitations, pas la probabilité qu’un feu s’y déclare : les deux se complètent.
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- ======================= PARTIE 2 =============================== -->
+<!-- ================================================================ -->
+<div class="partie-titre" id="partie2">
+  <div class="inner">
+    <div class="num-partie">Partie 2</div>
+    <h2>L’accessibilité des secours</h2>
+    <p>Combien de temps faut-il, au minimum, pour qu’une caserne atteigne chaque forêt de la région ?</p>
+  </div>
+</div>
+
+<!-- 2.1 Casernes -->
+<section>
+  <div class="inner duo">
+    <div>
+      <p class="eyebrow">2.1 · Les casernes</p>
+      <h2>460 casernes, concentrées sur le littoral</h2>
+      <ul class="points">
+        <li>Les casernes suivent la population : Bouches-du-Rhône (98), Alpes-Maritimes (84) et Var (72) en tête.</li>
+        <li>Les départements alpins en comptent moins pour des territoires forestiers bien plus vastes : 46 dans les Alpes-de-Haute-Provence, 38 dans les Hautes-Alpes.</li>
+        <li>72 casernes situées à moins de 20 km de la région sont aussi retenues, pour éviter l’effet de bord.</li>
+      </ul>
+      <div class="cadre" style="margin-top:22px;"><img src="img/ats_casernes_departement.png" alt="Nombre de casernes par département"></div>
+    </div>
+    <div class="cadre"><img src="img/ats_carte_forets_casernes.png" alt="Carte des forêts et des casernes de sapeurs-pompiers en PACA"></div>
+  </div>
+</section>
+
+<!-- 2.2 Délais -->
+<section class="sable" id="p2-delais">
+  <div class="inner duo inverse">
+    <div class="cadre"><img src="img/ats_histogramme_delais.png" alt="Histogramme des délais d’accès théoriques aux forêts"></div>
+    <div>
+      <p class="eyebrow">2.2 · Les délais d’accès</p>
+      <h2>La plupart des forêts sont à moins de 10 minutes</h2>
+      <div class="liste-chiffres">
+        <div><b>7 min</b>délai médian (4,6 km à vol d’oiseau)</div>
+        <div><b>73 %</b>des forêts à moins de 10 minutes</div>
+        <div><b>0,6 %</b>au-delà de 20 minutes (29 min au maximum)</div>
+      </div>
+    </div>
+  </div>
+  <div class="inner" style="margin-top:56px;">
+    <h3 style="font-size:28px; margin-bottom:18px;">Les départements alpins sont les plus éloignés des secours</h3>
+    <table>
+      <tr><th>Département</th><th class="n">Forêts</th><th class="n">Délai moyen</th><th class="n">Délai médian</th><th class="n">Délai max</th></tr>
+      <tr class="fort"><td>04 · Alpes-de-Haute-Provence</td><td class="n">29 167</td><td class="n">9,2 min</td><td class="n">8,8 min</td><td class="n">22,9 min</td></tr>
+      <tr class="fort"><td>05 · Hautes-Alpes</td><td class="n">23 006</td><td class="n">8,6 min</td><td class="n">8,0 min</td><td class="n">28,8 min</td></tr>
+      <tr><td>84 · Vaucluse</td><td class="n">10 115</td><td class="n">7,2 min</td><td class="n">6,4 min</td><td class="n">20,6 min</td></tr>
+      <tr><td>83 · Var</td><td class="n">20 086</td><td class="n">7,0 min</td><td class="n">6,7 min</td><td class="n">18,5 min</td></tr>
+      <tr><td>06 · Alpes-Maritimes</td><td class="n">16 025</td><td class="n">6,7 min</td><td class="n">6,2 min</td><td class="n">20,2 min</td></tr>
+      <tr><td>13 · Bouches-du-Rhône</td><td class="n">11 099</td><td class="n">5,6 min</td><td class="n">5,2 min</td><td class="n">21,9 min</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 2.3 Cartes interactives partie 2 -->
+<section class="sombre" id="p2-cartes">
+  <div class="inner">
+    <p class="eyebrow">2.3 · Cartes interactives</p>
+    <h2>Les délais, commune par commune</h2>
+    <p class="intro">Survolez une commune pour afficher ses chiffres, et cochez ou décochez les couches dans le menu en haut à droite.</p>
+    <div class="onglets" data-cible="carte-p2">
+      <button class="actif" data-carte="cartes/ats_delais.html">Délai moyen par commune</button>
+      <button data-carte="cartes/ats_typologie.html">Typologie des communes</button>
+    </div>
+    <iframe id="carte-p2" class="carte-web" src="cartes/ats_delais.html" title="Cartes interactives de l’accessibilité des secours" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- 2.4 Incendies et délais -->
+<section id="p2-lien">
+  <div class="inner duo">
+    <div>
+      <p class="eyebrow">2.4 · Incendies et délais</p>
+      <h2>Plus de feux là où les casernes sont proches</h2>
+      <div class="grand-chiffre" style="margin:22px 0 10px;">−0,27</div>
+      <p>Corrélation de Spearman entre le nombre d’incendies et le délai moyen par commune.</p>
+      <ul class="points">
+        <li>Les communes qui brûlent le plus sont plutôt bien desservies : les feux naissent près des zones habitées, là où sont aussi les casernes.</li>
+        <li>Spearman travaille sur les rangs : il résiste aux quelques communes qui concentrent énormément de feux.</li>
+      </ul>
+    </div>
+    <div class="cadre"><img src="img/ats_nuage_incendies_delai.png" alt="Nuage de points du nombre d’incendies selon le délai moyen par commune"></div>
+  </div>
+</section>
+
+<!-- 2.5 Typologie -->
+<section class="sable" id="p2-typo">
+  <div class="inner duo inverse">
+    <div class="cadre"><img src="img/ats_carte_typologie.png" alt="Carte de la typologie des communes de PACA"></div>
+    <div>
+      <p class="eyebrow">2.5 · Typologie des communes</p>
+      <h2>154 communes à surveiller en priorité</h2>
+      <p>Une commune est <b>prioritaire</b> quand elle a à la fois plus d’incendies (plus de 3 feux) et un délai moyen plus long (plus de 6,4 min) que la médiane des communes.</p>
+      <div class="types">
+        <div class="type"><span class="pastille" style="background:var(--typo-prioritaire);"></span><span class="nom">Prioritaire</span><span class="nb">154</span></div>
+        <div class="type"><span class="pastille" style="background:var(--typo-exposee);"></span><span class="nom">Exposée mais desservie</span><span class="nb">260</span></div>
+        <div class="type"><span class="pastille" style="background:var(--typo-eloignee);"></span><span class="nom">Éloignée, peu de feux</span><span class="nb">317</span></div>
+        <div class="type"><span class="pastille" style="background:var(--typo-faible);"></span><span class="nom">Faible enjeu</span><span class="nb">211</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="inner" style="margin-top:56px;">
+    <h3 style="font-size:28px; margin-bottom:18px;">Top 10 des communes prioritaires</h3>
+    <table>
+      <tr><th>Commune</th><th>Dép.</th><th class="n">Incendies</th><th class="n">Forêts</th><th class="n">Délai moyen</th><th class="n">Délai max</th></tr>
+      <tr class="fort"><td>Aix-en-Provence</td><td>13</td><td class="n">162</td><td class="n">582</td><td class="n">6,9 min</td><td class="n">13,1 min</td></tr>
+      <tr><td>Lançon-Provence</td><td>13</td><td class="n">60</td><td class="n">213</td><td class="n">9,0 min</td><td class="n">13,3 min</td></tr>
+      <tr><td>Cabriès</td><td>13</td><td class="n">43</td><td class="n">138</td><td class="n">7,2 min</td><td class="n">11,5 min</td></tr>
+      <tr><td>Le Rove</td><td>13</td><td class="n">34</td><td class="n">43</td><td class="n">7,4 min</td><td class="n">8,8 min</td></tr>
+      <tr><td>Roquebrune-sur-Argens</td><td>83</td><td class="n">29</td><td class="n">321</td><td class="n">6,7 min</td><td class="n">11,9 min</td></tr>
+      <tr><td>Jouques</td><td>13</td><td class="n">28</td><td class="n">397</td><td class="n">6,4 min</td><td class="n">12,0 min</td></tr>
+      <tr><td>Saint-Chamas</td><td>13</td><td class="n">27</td><td class="n">87</td><td class="n">7,3 min</td><td class="n">11,8 min</td></tr>
+      <tr><td>Digne-les-Bains</td><td>04</td><td class="n">27</td><td class="n">594</td><td class="n">7,0 min</td><td class="n">14,5 min</td></tr>
+      <tr><td>Courmes</td><td>06</td><td class="n">24</td><td class="n">39</td><td class="n">6,8 min</td><td class="n">8,7 min</td></tr>
+      <tr><td>Saint-Cannat</td><td>13</td><td class="n">22</td><td class="n">103</td><td class="n">6,7 min</td><td class="n">9,4 min</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= SYNTHÈSE ================= -->
+<section id="synthese" class="sombre">
+  <div class="inner">
+    <p class="eyebrow">Synthèse</p>
+    <p class="message-cle">Le feu naît là où vivent les gens. Mais ce sont les habitants <span>isolés en lisière</span>, dans l’arrière-pays, qui cumulent la plus forte exposition et les secours les plus lointains.</p>
+    <div class="stats">
+      <div class="stat"><div class="titre">1 · Une exposition concentrée</div><p>Un quart des adresses est en interface habitat-forêt, et 61 % des habitations isolées.</p></div>
+      <div class="stat"><div class="titre">2 · Des secours globalement proches</div><p>73 % des forêts sont à moins de 10 minutes d’une caserne, mais les départements alpins sont plus éloignés.</p></div>
+      <div class="stat"><div class="titre">3 · Deux résultats qui convergent</div><p>Les deux parties montrent que les feux se concentrent près des zones habitées et des casernes, loin des habitations les plus exposées.</p></div>
+      <div class="stat"><div class="titre">4 · Où agir en priorité</div><p>154 communes cumulent feux fréquents et délais longs, et les « zones d’ombre » isolées méritent une attention particulière.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LIMITES ================= -->
+<section id="limites" class="sable">
+  <div class="inner">
+    <p class="eyebrow">Limites</p>
+    <h2>Ce que nos estimations ne disent pas</h2>
+    <div class="limites" style="margin-top:28px;">
+      <div class="limite"><h3>Pondérations du score</h3><p>Les poids (0,5 et 0,5) et le seuil de forte exposition (0,5) sont des choix : un test de sensibilité les consoliderait.</p></div>
+      <div class="limite"><h3>Dépendance spatiale</h3><p>Les résidus du modèle restent corrélés dans l’espace (I de Moran = 0,17) : les communes voisines se ressemblent.</p></div>
+      <div class="limite"><h3>Vol d’oiseau × 1,3</h3><p>Le réseau routier réel (OSRM, osmnx) donnerait des délais plus justes, surtout en montagne.</p></div>
+      <div class="limite"><h3>La plus proche ≠ celle qui part</h3><p>La disponibilité et les moyens des casernes ne sont pas pris en compte.</p></div>
+      <div class="limite"><h3>Adresses ≠ ménages</h3><p>Une adresse de la BAN peut regrouper plusieurs logements : l’exposition est mesurée par adresse.</p></div>
+      <div class="limite"><h3>Qualité d’OpenStreetMap</h3><p>Données collaboratives : certaines casernes peuvent manquer ou être mal étiquetées.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <div><b>Khadidiatou Coulibaly · Abdou Hamid Alagbe</b><br>ENSAE Paris · Sous la supervision de M. Daniel Marin<br>Réalisé avec Claude</div>
+    <div>Sources : Base Adresse Nationale, occupation du sol 2019 de la région Sud (DataSud), BDIFF (feux de forêt), OpenStreetMap (Overpass Turbo), entités administratives (DataSud)</div>
+  </div>
+</footer>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
