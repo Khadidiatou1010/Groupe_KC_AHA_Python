@@ -59,8 +59,8 @@ Groupe_KC_AHA_Python/
 │
 ├── main/                              ← notebooks d’analyse
 │   ├── ihf/                           ← Partie 1 : interface habitat-forêt
-│   │   ├── data_analysis.ipynb
-│   │   └── 02_data_visualization.ipynb
+│   │   ├── 01_data_visualization.ipynb
+│   │   └── 02_data_analysis.ipynb
 │   └── ats/                           ← Partie 2 : accessibilité et temps de secours
 │       ├── 01_preparation_exploration.ipynb
 │       ├── 02_calcul_delais.ipynb
