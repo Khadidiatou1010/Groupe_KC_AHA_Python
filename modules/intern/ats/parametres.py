@@ -24,11 +24,11 @@ NOMS_CLASSES_DELAI = ["Moins de 10 min", "10 à 20 min", "20 à 30 min", "Plus d
 
 # ---- couleurs de la typologie des communes ----
 COULEURS_TYPOLOGIE = {
-    "Prioritaire": "#c0392b",
-    "Exposée mais desservie": "#f39c12",
-    "Éloignée, peu de feux": "#5dade2",
-    "Faible enjeu": "#d5d8dc",
-    "Pas de forêt": "#ffffff"
+    "Prioritaire": "#B2182B",              # rouge profond : les deux risques à la fois
+    "Exposée mais desservie": "#F4A261",   # orange doux : beaucoup de feux
+    "Éloignée, peu de feux": "#F7E08C",    # violet : délai long
+    "Faible enjeu": "#E3DED6",             # gris beige : presque neutre
+    "Pas de forêt": "#FFFFFF"
 }
 
 # ---- noms des fichiers de données ----
@@ -45,3 +45,22 @@ COL_DEP = "dep"     # code du département (créé pendant la préparation)
 
 # adresse publique du fichier lourd (stockage SSP Cloud)
 URL_FORETS = "https://minio.lab.sspcloud.fr/khcoulibaly/diffusion/occupation_du_sol.zip"
+
+
+
+# Palette de couleurs. C'est pour avoir une jolie palette pour les délai
+import matplotlib
+from matplotlib.colors import LinearSegmentedColormap
+
+# palette des délais : de crème (court) à rouge brique (long)
+palette_braise = LinearSegmentedColormap.from_list(
+    "braise",
+    ["#FFF4D6", "#FDCB8A", "#F58B4C", "#D9480F", "#8A1C0B"]
+)
+
+# j'enregistre la palette dans matplotlib pour pouvoir l'appeler par son nom
+# (le "if" évite une erreur si le module est rechargé et la palette existe déjà)
+if "braise" not in matplotlib.colormaps:
+    matplotlib.colormaps.register(palette_braise)
+
+PALETTE_DELAI = "braise"

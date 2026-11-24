@@ -27,7 +27,7 @@ def ajouter_points(carte, points, nom_couche, couleur, rayon=3, infobulle=None, 
         m=carte,
         color=couleur,
         marker_type="circle_marker",
-        marker_kwds={"radius": rayon},
+        marker_kwds={"radius": rayon, "weight": 1, "fillOpacity": 0.9},
         tooltip=infobulle,
         tooltip_kwds=options_infobulle,
         name=nom_couche
@@ -40,22 +40,22 @@ def ajouter_menu_couches(carte):
     folium.LayerControl(collapsed=False).add_to(carte)
 
 
-def carte_delais(communes_web, casernes, forets_loin, col_nom="nom", fichier=None):
+def carte_delais(communes_web, casernes, forets_loin, col_nom="nom", palette="YlOrRd", fichier=None):
     """Carte interactive : délai moyen par commune + casernes + forêts les plus éloignées."""
     carte = communes_web.explore(
         column="delai_moyen",
-        cmap="YlOrRd",
+        cmap=palette,
         scheme="quantiles",
         k=5,
         tooltip=[col_nom, "nb_incendies", "nb_forets", "delai_moyen", "typologie"],
         tooltip_kwds={"aliases": ["Commune", "Incendies", "Forêts", "Délai moyen (min)", "Typologie"]},
-        style_kwds={"weight": 0.3, "color": "grey", "fillOpacity": 0.7},
+        style_kwds={"weight": 0.3, "color": "grey", "fillOpacity": 0.9},
         missing_kwds={"color": "lightgrey"},
         legend_kwds={"caption": "Délai moyen (min)"},
         tiles="OpenStreetMap",
         name="Délai moyen par commune"
     )
-    ajouter_points(carte, casernes, "Casernes", "black", rayon=3, infobulle=["name"], alias=["Caserne"])
+    ajouter_points(carte, casernes, "Casernes", "#1D3557", rayon=2, infobulle=["name"], alias=["Caserne"])
     ajouter_points(
         carte, forets_loin, "Forêts les plus éloignées", "darkgreen", rayon=5,
         infobulle=[col_nom, "delai_min", "surface_ha", "nom_caserne"],
@@ -76,12 +76,12 @@ def carte_typologie(communes_web, casernes, couleurs, col_nom="nom", fichier=Non
         cmap=list(couleurs.values()),
         tooltip=[col_nom, "nb_incendies", "delai_moyen", "typologie"],
         tooltip_kwds={"aliases": ["Commune", "Incendies", "Délai moyen (min)", "Typologie"]},
-        style_kwds={"weight": 0.3, "color": "grey", "fillOpacity": 0.8},
+        style_kwds={"weight": 0.3, "color": "grey", "fillOpacity": 0.9},
         legend_kwds={"caption": "Typologie"},
         tiles="OpenStreetMap",
         name="Typologie des communes"
     )
-    ajouter_points(carte, casernes, "Casernes", "black", rayon=3, infobulle=["name"], alias=["Caserne"])
+    ajouter_points(carte, casernes, "Casernes", "#1D3557", rayon=2, infobulle=["name"], alias=["Caserne"])
     ajouter_menu_couches(carte)
     if fichier is not None:
         carte.save(fichier)
