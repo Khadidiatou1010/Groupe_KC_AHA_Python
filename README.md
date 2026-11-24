@@ -26,6 +26,8 @@ Ces mesures sont combinées dans un **score d’exposition** compris entre 0 et 
 
 Cette partie se demande si les sapeurs-pompiers peuvent atteindre rapidement les forêts de la région. Pour chacune des forêts de la région PACA, nous identifions la caserne la plus proche et estimons un **délai théorique d’intervention**, à partir de la distance à vol d’oiseau corrigée d’un coefficient de détour et d’une vitesse moyenne. Ces délais sont ensuite agrégés par commune et croisés avec l’historique des incendies, pour repérer les **communes prioritaires** : celles qui cumulent beaucoup de feux et un accès plus long.
 
+*Les résultats obtenus sont visibles à la page suivante : [https://khadidiatou1010.github.io/Groupe_KC_AHA_Python/](https://khadidiatou1010.github.io/Groupe_KC_AHA_Python/)*
+
 Les données mobilisées pour ces deux analyses sont présentées dans la section suivante.
 
 
