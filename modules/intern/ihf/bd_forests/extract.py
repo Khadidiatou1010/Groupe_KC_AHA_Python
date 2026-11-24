@@ -15,31 +15,25 @@ import os
 # # Third Party Imports
 import geopandas as gpd
 
+# # Project Imports: download function shared with the ATS part
+from intern.ats import chargement, parametres
+
 # # global variable
 
-BD_FORESTS_FILE = ["../../data/vegetation/occupation-du-sol-region-sud-2019Polygon.shp"]
+BD_FORESTS_FILE = ["../../data/forests/occupation-du-sol-region-sud-2019Polygon.shp"]
 
 
-def read_bd_forests_file(path):
+def read_bd_forests_file(path=BD_FORESTS_FILE[0]):
     """
     Function to read the vegetation file and return the data as a GeoDataFrame.
+    If the file is not on the computer, it is first downloaded from its online copy.
     :param path: path to the vegetation file
     :return: GeoDataFrame
     """
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"The file {path} does not exist.")
-    
-    gdf = gpd.read_file(path)
+    dossier = os.path.dirname(path)
+    nom_fichier = os.path.basename(path)
+    # the function returns the REAL path of the file (it may be inside a sub-folder of the zip)
+    vrai_chemin = chargement.telecharger_et_dezipper(parametres.URL_FORETS, dossier, nom_fichier)
+
+    gdf = gpd.read_file(vrai_chemin)
     return gdf
-
-
-
-
-
-
-
-
-
-
-
-
