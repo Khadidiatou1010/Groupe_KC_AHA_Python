@@ -1,1 +1,0 @@
-https://www.datasud.fr/geoserver/region-sud/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=region-sud%3Aosm-urgence-polygones&OUTPUTFORMAT=SHAPE-ZIP&SRSNAME=EPSG%3A2154
