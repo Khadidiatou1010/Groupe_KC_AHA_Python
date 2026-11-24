@@ -70,16 +70,33 @@ def apercu(df, nom):
     print()
 
 
+def chercher_dans_dossier(nom_fichier, dossier):
+    """Cherche un fichier dans un dossier et ses sous-dossiers. Renvoie son chemin, ou None."""
+    for racine, sous_dossiers, fichiers in os.walk(dossier):
+        if nom_fichier in fichiers:
+            return os.path.join(racine, nom_fichier)
+    return None
+
+
 def telecharger_et_dezipper(url, dossier_destination, fichier_attendu):
-    """Télécharge un zip et le décompresse, SEULEMENT si le fichier attendu n'est pas déjà là."""
-    chemin_attendu = os.path.join(dossier_destination, fichier_attendu)
-    if os.path.exists(chemin_attendu):
-        return chemin_attendu
+    """Télécharge un zip et le décompresse, SEULEMENT si le fichier attendu n'est pas déjà là.
+    Renvoie le chemin réel du fichier (même s'il était rangé dans un sous-dossier du zip)."""
+    # 1. le fichier est peut-être déjà là (directement ou dans un sous-dossier)
+    chemin = chercher_dans_dossier(fichier_attendu, dossier_destination)
+    if chemin is not None:
+        return chemin
+
+    # 2. sinon, je télécharge et je décompresse
     print("Téléchargement de", url)
     os.makedirs(dossier_destination, exist_ok=True)
     chemin_zip = os.path.join(dossier_destination, "telechargement.zip")
     urllib.request.urlretrieve(url, chemin_zip)
     with zipfile.ZipFile(chemin_zip) as z:
         z.extractall(dossier_destination)
-    os.remove(chemin_zip)      # je supprime le zip, je garde les fichiers décompressés
-    return chemin_attendu
+    os.remove(chemin_zip)
+
+    # 3. je cherche le fichier là où le zip l'a mis
+    chemin = chercher_dans_dossier(fichier_attendu, dossier_destination)
+    if chemin is None:
+        raise FileNotFoundError(fichier_attendu + " est introuvable dans le zip téléchargé")
+    return chemin
