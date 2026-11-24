@@ -7,5 +7,7 @@ wfsrequest*
 
 .vscode/*
 
+sorties/
 
+*.zip
 
